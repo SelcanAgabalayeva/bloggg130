@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{dashboard/layout}">
+<head>
+    <title>Home</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <a class="btn btn-success" href="/dashboard/category/create">Create</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ad</th>
+            <th scope="col"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category , data : ${categories}">
+            <th th:text="${data.index+1}" scope="row">1</th>
+            <td th:text="${category.name}">Mark</td>
+            <td>
+                <a class="btn btn-warning" th:href="'/dashboard/category/edit/'+${category.id}">Edit</a>
+                <a class="btn btn-danger" th:href="'/dashboard/category/delete/'+${category.id}">Remove</a>
+            </td>
+
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
